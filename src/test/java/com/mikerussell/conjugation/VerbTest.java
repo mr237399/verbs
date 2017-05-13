@@ -26,7 +26,6 @@ public class VerbTest {
         for (java.lang.reflect.Method method : Verb.class.getDeclaredMethods()) {
             if (method.getName().startsWith("set")) {
                 //TODO: Invoke the setter
-                System.out.println(method.getParameterTypes()[0].getCanonicalName());
                 if (method.getParameterTypes()[0].getCanonicalName().equals("java.lang.String")) {
                     String testString = "test";
                     method.invoke(verb, testString);

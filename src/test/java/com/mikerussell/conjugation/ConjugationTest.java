@@ -100,7 +100,6 @@ public class ConjugationTest {
             conj.setSelectedPerson(i);
             beConj.setSelectedPerson(i);
             String expectedConjugation = beConj.getPastSimple() + " " + conj.getVerb().getPresentParticiple();
-            System.out.println(expectedConjugation);
             String actualConjugation = conj.getPastProgressive();
             assertEquals(expectedConjugation, actualConjugation);
         }
@@ -115,7 +114,7 @@ public class ConjugationTest {
             conj.setSelectedPerson(i);
             String actualConjugation = conj.getFutureGoingTo();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
 
     }
@@ -128,7 +127,7 @@ public class ConjugationTest {
             String expected = conj.getSelectedPerson() + " will " + conj.getVerb().getBaseForm();
             String actualConjugation = conj.getFutureWill();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -141,7 +140,7 @@ public class ConjugationTest {
             String expected = haveConj.getPresentSimple() + " " + conj.getVerb().getPastParticiple();
             String actualConjugation = conj.getPresentPerfect();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -154,7 +153,7 @@ public class ConjugationTest {
             String expected = haveConj.getPastSimple() + " " + conj.getVerb().getPastParticiple();
             String actualConjugation = conj.getPastPerfect();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -167,7 +166,7 @@ public class ConjugationTest {
             String expected = haveConj.getFutureWill() + " " + conj.getVerb().getPastParticiple();
             String actualConjugation = conj.getFuturePerfect();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -179,7 +178,7 @@ public class ConjugationTest {
             String expected = beConj.getFutureWill() + " " + conj.getVerb().getPresentParticiple();
             String actualConjugation = conj.getFutureProgressive();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -191,7 +190,7 @@ public class ConjugationTest {
             String expected = beConj.getFuturePerfect() + " " + conj.getVerb().getPresentParticiple();
             String actualConjugation = conj.getFuturePerfectProgressive();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -203,7 +202,7 @@ public class ConjugationTest {
             String expected = beConj.getPresentPerfect() + " " + conj.getVerb().getPresentParticiple();
             String actualConjugation = conj.getPresentPerfectProgressive();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -215,7 +214,7 @@ public class ConjugationTest {
             String expected = beConj.getPastPerfect() + " " + conj.getVerb().getPresentParticiple();
             String actualConjugation = conj.getPastPerfectProgressive();
             assertEquals(expected, actualConjugation);
-            System.out.println(actualConjugation);
+
         }
     }
 
@@ -226,6 +225,12 @@ public class ConjugationTest {
         assertEquals(4, instancesOf("past"));
         assertEquals(4, instancesOf("present"));
         assertEquals(5, instancesOf("future"));
+    }
+
+    @Test
+    public void setVerbTest() {
+        conj.setVerb(verb);
+        assertEquals(verb, conj.getVerb());
     }
 
     private int instancesOf(String time) {

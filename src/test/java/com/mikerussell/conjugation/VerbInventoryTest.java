@@ -1,8 +1,5 @@
 package com.mikerussell.conjugation;
 
-import com.mikerussell.conjugation.Conjugation;
-import com.mikerussell.conjugation.Verb;
-import com.mikerussell.conjugation.VerbInventory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +20,6 @@ public class VerbInventoryTest {
     @Test
     public void shouldLoadVerbs(){
         VerbInventory verbInventory = new VerbInventory("target/test-classes/verbs.csv");
-        System.out.println(verbInventory.getVerbs().size());
         assertTrue(verbInventory.getVerbs().size()  == 18);
 
         for (Verb verb : verbInventory.getVerbs()){
@@ -34,7 +30,6 @@ public class VerbInventoryTest {
     @Test
     public void getIrregularVerbsOnlyReturnsIrregularVerbs(){
         VerbInventory verbInventory = new VerbInventory("target/test-classes/verbs.csv");
-        System.out.println(verbInventory.getIrregularVerbs().size());
         assertTrue(verbInventory.getIrregularVerbs().size()  == 3);
     }
 
@@ -43,7 +38,6 @@ public class VerbInventoryTest {
         Conjugation conj = new Conjugation(verb);
         for(int i = 1; i <= conj.persons.size(); i++){
             conj.setSelectedPerson(i);
-            System.out.println(conj.getFutureWill());
             assertEquals(conj.getFutureWill(), conj.getSelectedPerson() + " will " + verb.getBaseForm());
         }
 

@@ -1,6 +1,7 @@
 package com.mikerussell.conjugation;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -12,7 +13,9 @@ import java.util.Random;
  * Created by mrussell on 7/2/16.
  */
 public class Conjugation {
+
     public HashMap<Integer, String> persons = new HashMap<Integer, String>();
+    Logger log = Logger.getLogger(Conjugation.class);
     String selectedPerson = "";
 
     Verb verb;
@@ -74,10 +77,12 @@ public class Conjugation {
         return selectedPerson;
     }
 
-    public void setSelectedPerson(int selectedPersonKey){ this.selectedPerson = getPersons().get(selectedPersonKey);}
-
     public void setSelectedPerson(String selectedPerson) {
         this.selectedPerson = selectedPerson;
+    }
+
+    public void setSelectedPerson(int selectedPersonKey) {
+        this.selectedPerson = getPersons().get(selectedPersonKey);
     }
 
     public Verb getVerb() {
@@ -192,7 +197,7 @@ public class Conjugation {
                 );
 
                 tenseInPascalCase = null;
-                System.out.println(formattedString);
+                log.debug(formattedString);
 
                 tensez.add(formattedString);
                 formattedString = null;

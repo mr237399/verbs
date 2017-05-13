@@ -1,5 +1,7 @@
 package com.mikerussell.conjugation;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,12 +23,9 @@ public class VerbInventory implements IVerbInventory{
 
 
     public void loadVerbsFromFile(String filename){
-
-
-        //TODO: Load CSV File
+        Logger log = Logger.getLogger(VerbInventory.class);
 
         List<Verb> vl = new ArrayList<Verb>();
-        //TODO: For each row, add verb to verb array
 
         String line = "";
         String cvsSplitBy = ",";
@@ -42,7 +41,7 @@ public class VerbInventory implements IVerbInventory{
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getStackTrace());
         }finally{
             verbs = vl;
         }
