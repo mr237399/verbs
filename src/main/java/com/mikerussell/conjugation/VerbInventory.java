@@ -14,7 +14,7 @@ public class VerbInventory implements IVerbInventory{
 
     private List<Verb> verbs;
 
-    VerbInventory(String filename){
+    public VerbInventory(String filename) {
      loadVerbsFromFile(filename);
     }
 

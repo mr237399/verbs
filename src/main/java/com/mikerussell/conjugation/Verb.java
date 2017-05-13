@@ -6,6 +6,22 @@ package com.mikerussell.conjugation;
 
 public class Verb {
 
+    protected String presentParticiple;
+    protected String pastParticiple;
+    protected String baseForm;
+    protected String PastSimple;
+    protected Boolean isIrregular;
+    protected String thirdPersonSingular;
+
+    public Verb(String baseForm, String thirdPersonSingular, String PastSimple, String pastParticiple, String presentParticiple, Boolean isIrregular) {
+        this.baseForm = baseForm;
+        this.thirdPersonSingular = thirdPersonSingular;
+        this.PastSimple = PastSimple;
+        this.pastParticiple = pastParticiple;
+        this.presentParticiple = presentParticiple;
+        this.isIrregular = isIrregular;
+    }
+
     public String getPresentParticiple() {
         return presentParticiple;
     }
@@ -30,12 +46,12 @@ public class Verb {
         this.baseForm = baseForm;
     }
 
-    public String getSimplePast() {
-        return simplePast;
+    public String getPastSimple() {
+        return PastSimple;
     }
 
-    public void setSimplePast(String simplePast) {
-        this.simplePast = simplePast;
+    public void setPastSimple(String PastSimple) {
+        this.PastSimple = PastSimple;
     }
 
     public Boolean getIrregular() {
@@ -46,28 +62,11 @@ public class Verb {
         isIrregular = irregular;
     }
 
-    protected String presentParticiple;
-    protected String pastParticiple;
-    protected String baseForm;
-    protected String simplePast;
-    protected Boolean isIrregular;
-
     public String getThirdPersonSingular() {
         return thirdPersonSingular;
     }
 
     public void setThirdPersonSingular(String thirdPersonSingular) {
         this.thirdPersonSingular = thirdPersonSingular;
-    }
-
-    protected String thirdPersonSingular;
-
-    public Verb(String baseForm, String thirdPersonSingular, String simplePast, String pastParticiple, String presentParticiple, Boolean isIrregular){
-        this.baseForm=baseForm;
-        this.thirdPersonSingular = thirdPersonSingular;
-        this.simplePast=simplePast;
-        this.pastParticiple=pastParticiple;
-        this.presentParticiple=presentParticiple;
-        this.isIrregular=isIrregular;
     }
 }

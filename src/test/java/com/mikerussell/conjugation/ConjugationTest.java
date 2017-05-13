@@ -1,9 +1,9 @@
 package com.mikerussell.conjugation;
 
-import com.mikerussell.conjugation.Conjugation;
-import com.mikerussell.conjugation.Verb;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -34,7 +34,7 @@ public class ConjugationTest {
 
         conj.setSelectedPerson("I");
 
-        assertEquals("I go", conj.getSimplePresent());
+        assertEquals("I go", conj.getPresentSimple());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ConjugationTest {
                 expectedConjugation = conj.getSelectedPerson() + " " + conj.getVerb().getThirdPersonSingular();
             }
 
-            String actualConjugation = conj.getSimplePresent();
+            String actualConjugation = conj.getPresentSimple();
             assertEquals(expectedConjugation, actualConjugation);
         }
     }
@@ -60,21 +60,21 @@ public class ConjugationTest {
         conj.setSelectedPerson("He");
 
         String expectedConjugation = "He goes";
-        assertEquals(expectedConjugation, conj.getSimplePresent());
+        assertEquals(expectedConjugation, conj.getPresentSimple());
     }
 
     @Test
-    public void canConjugateSimplePast(){
+    public void canConjugatePastSimple() {
         conj.setSelectedPerson("He");
-        assertEquals("He went", conj.getSimplePast());
+        assertEquals("He went", conj.getPastSimple());
     }
 
     @Test
-    public void canConjugateSimplePastThirdPersonSingularOfBe(){
+    public void canConjugatePastSimpleThirdPersonSingularOfBe() {
         //new Verb("be", "is", "were", "been", "being", true);
 
         beConj.setSelectedPerson("She");
-        assertEquals("She was", beConj.getSimplePast());
+        assertEquals("She was", beConj.getPastSimple());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class ConjugationTest {
 
             conj.setSelectedPerson(i);
             beConj.setSelectedPerson(i);
-            String expectedConjugation = beConj.getSimplePresent() + " " + conj.getVerb().getPresentParticiple();
+            String expectedConjugation = beConj.getPresentSimple() + " " + conj.getVerb().getPresentParticiple();
 
             String actualConjugation = conj.getPresentProgressive();
             assertEquals(expectedConjugation, actualConjugation);
@@ -99,7 +99,7 @@ public class ConjugationTest {
 
             conj.setSelectedPerson(i);
             beConj.setSelectedPerson(i);
-            String expectedConjugation = beConj.getSimplePast() + " " + conj.getVerb().getPresentParticiple();
+            String expectedConjugation = beConj.getPastSimple() + " " + conj.getVerb().getPresentParticiple();
             System.out.println(expectedConjugation);
             String actualConjugation = conj.getPastProgressive();
             assertEquals(expectedConjugation, actualConjugation);
@@ -111,9 +111,9 @@ public class ConjugationTest {
 
         for(int i = 1; i <= 8; i++){
             beConj.setSelectedPerson(i);
-            String expected = beConj.getSimplePresent() + " going to " + verb.getBaseForm();
+            String expected = beConj.getPresentSimple() + " going to " + verb.getBaseForm();
             conj.setSelectedPerson(i);
-            String actualConjugation = conj.getFutureGT();
+            String actualConjugation = conj.getFutureGoingTo();
             assertEquals(expected, actualConjugation);
             System.out.println(actualConjugation);
         }
@@ -138,7 +138,7 @@ public class ConjugationTest {
         for(int i = 1; i <= 8; i++){
             conj.setSelectedPerson(i);
             haveConj.setSelectedPerson(i);
-            String expected = haveConj.getSimplePresent() + " " + conj.getVerb().getPastParticiple();
+            String expected = haveConj.getPresentSimple() + " " + conj.getVerb().getPastParticiple();
             String actualConjugation = conj.getPresentPerfect();
             assertEquals(expected, actualConjugation);
             System.out.println(actualConjugation);
@@ -151,7 +151,7 @@ public class ConjugationTest {
         for(int i = 1; i <= 8; i++){
             conj.setSelectedPerson(i);
             haveConj.setSelectedPerson(i);
-            String expected = haveConj.getSimplePast() + " " + conj.getVerb().getPastParticiple();
+            String expected = haveConj.getPastSimple() + " " + conj.getVerb().getPastParticiple();
             String actualConjugation = conj.getPastPerfect();
             assertEquals(expected, actualConjugation);
             System.out.println(actualConjugation);
@@ -199,14 +199,38 @@ public class ConjugationTest {
     public void canConjugatePresentPerfectProgressive(){
         for(int i = 1; i <= 8; i++){
             conj.setSelectedPerson(i);
-            haveConj.setSelectedPerson(i);
-            String expected = haveConj.getPresentPerfect() + " " + conj.getVerb().getPresentParticiple();
+            beConj.setSelectedPerson(i);
+            String expected = beConj.getPresentPerfect() + " " + conj.getVerb().getPresentParticiple();
             String actualConjugation = conj.getPresentPerfectProgressive();
             assertEquals(expected, actualConjugation);
             System.out.println(actualConjugation);
         }
     }
 
+    @Test
+    public void canConjugatePastPerfectProgressive() {
+        for (int i = 1; i <= 8; i++) {
+            conj.setSelectedPerson(i);
+            beConj.setSelectedPerson(i);
+            String expected = beConj.getPastPerfect() + " " + conj.getVerb().getPresentParticiple();
+            String actualConjugation = conj.getPastPerfectProgressive();
+            assertEquals(expected, actualConjugation);
+            System.out.println(actualConjugation);
+        }
+    }
+
+    @Test
+    public void getVerbTensesListOnlyReturnsTenseNames() {
+
+        assert (beConj.getTenses().size() == 13);
+        assertEquals(4, instancesOf("past"));
+        assertEquals(4, instancesOf("present"));
+        assertEquals(5, instancesOf("future"));
+    }
+
+    private int instancesOf(String time) {
+        return beConj.getTenses().stream().filter(v -> v.toLowerCase().contains(time) == true).collect(Collectors.toList()).size();
+    }
 
 
 }
