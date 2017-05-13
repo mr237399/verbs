@@ -1,5 +1,8 @@
-package com.mikerussell;
+package com.mikerussell.conjugation;
 
+import com.mikerussell.conjugation.Conjugation;
+import com.mikerussell.conjugation.Verb;
+import com.mikerussell.conjugation.VerbInventory;
 import org.junit.Before;
 import org.junit.Test;
 

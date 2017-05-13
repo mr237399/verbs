@@ -1,5 +1,6 @@
-package com.mikerussell;
+package com.mikerussell.conjugation;
 
+import com.mikerussell.conjugation.Verb;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

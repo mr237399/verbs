@@ -1,4 +1,4 @@
-package com.mikerussell;
+package com.mikerussell.conjugation;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

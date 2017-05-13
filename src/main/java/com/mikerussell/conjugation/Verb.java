@@ -1,4 +1,4 @@
-package com.mikerussell;
+package com.mikerussell.conjugation;
 /**
  * Created by mrussell on 6/29/16.
  */

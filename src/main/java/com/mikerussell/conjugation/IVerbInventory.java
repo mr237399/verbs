@@ -1,4 +1,4 @@
-package com.mikerussell;
+package com.mikerussell.conjugation;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.mikerussell;
+package com.mikerussell.conjugation;
 
-import junit.framework.TestCase;
+import com.mikerussell.conjugation.Conjugation;
+import com.mikerussell.conjugation.Verb;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
